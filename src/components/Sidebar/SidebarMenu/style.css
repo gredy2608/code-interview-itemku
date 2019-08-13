@@ -1,0 +1,13 @@
+.list-item{
+    height: 56px;
+    padding-left: 32px !important;
+    padding-top: 64px !important;
+}
+
+.list-item-icon{
+    min-width: 36px !important;
+}
+
+.list-item-label{
+    color: #ffffff;
+}

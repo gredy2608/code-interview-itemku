@@ -1,0 +1,15 @@
+.app-bar{
+    background-color: #fff !important;
+}
+
+.app-title-container{
+    padding-left: 230px !important; 
+    flex-grow: 1;
+}
+
+.app-title{
+    color: #ababab;
+    font-size: 32px !important;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif
+}
