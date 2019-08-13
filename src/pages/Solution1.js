@@ -4,7 +4,7 @@ import { TextField, Grid, Button } from '@material-ui/core';
 
 import {
     solution as SolutionOne
-} from "../solutions/Solution1"
+} from "../solutions/Solution1/solution"
 
 class Solution1Page extends Component{
     constructor(props){
@@ -32,7 +32,6 @@ class Solution1Page extends Component{
     handleClick = () => {
         const { recordString } = this.state;
         let result = SolutionOne( this.mapRecordStringToArray(recordString) );
-        console.log(result);
         this.setState({
             ...this.state,
             answer: '[ '+result.join(", ")+' ]'

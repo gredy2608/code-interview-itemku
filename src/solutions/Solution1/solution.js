@@ -1,18 +1,18 @@
-function solution(record){
+function solution(record) {
     let answer = [];
     let logs = [];
     let users = [];
 
     //Map record to logs and users list
-    for( let rec of record ){
+    for (let rec of record) {
         let activity = rec.split(" ");
         let action = activity[0];
         let uid = activity[1];
         let username = activity[2];
-        switch(action){
+        switch (action) {
             case "Enter":
                 logs.push(
-                    [uid,  "came in."]
+                    [uid, "came in."]
                 );
                 users[uid] = {
                     username: username,
@@ -20,7 +20,7 @@ function solution(record){
                 };
                 break;
             case "Leave":
-                if(users[uid]){
+                if (users[uid]) {
                     logs.push(
                         [uid, "has left."]
                     );
@@ -28,7 +28,7 @@ function solution(record){
                 }
                 break;
             case "Change":
-                if(users[uid] && users[uid].active){
+                if (users[uid] && users[uid].active) {
                     users[uid].username = username;
                 }
                 break;
@@ -38,10 +38,10 @@ function solution(record){
     }
 
     //Map user name to logs to return current user name
-    for( var log of logs ){
+    for (var log of logs) {
         let uid = log[0];
         log[0] = users[uid].username;
-        answer.push( log.join(" "));
+        answer.push(log.join(" "));
     }
     return answer;
 }
