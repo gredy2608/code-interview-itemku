@@ -1,7 +1,7 @@
 function solution(relation) {
     let answer = 0;
     let columns = [];
-    let uniqueCombination = [];
+    let uniqueCombination = []; // List to save column combination that have unique data
 
     for (let i = 0; i < relation[0].length; i++) {
         columns[i] = i;
@@ -13,6 +13,7 @@ function solution(relation) {
 
     for (let i = 1; i < subsets.length; i++) {
         let data = [];
+        //get paired columns data(s)
         for (let j = 0; j < subsets[i].length; j++) {
             let col = subsets[i][j];
             for (let k = 0; k < relation.length; k++) {
@@ -22,14 +23,18 @@ function solution(relation) {
                 data[k].push(relation[k][col]);
             }
         }
+        //merge data as string to make comparison easier
         for (let l = 0; l < data.length; l++) {
             data[l] = data[l].join();
         }
 
+        //check if data for paired columns is unique
         if (isUnique(data)) {
+            //if subset contained combination between more than one columns check it's sub subset
             if (subsets[i].length > 1) {
                 let subsubsets = getSubset(subsets[i]);
                 let isUnique = true;
+                //check if sub subset already in founded combination
                 for (let subsubset of subsubsets) {
                     if (uniqueCombination.find(x => JSON.stringify(x) === JSON.stringify(subsubset))) {
                         isUnique = false;
@@ -37,6 +42,7 @@ function solution(relation) {
                     }
                 }
                 if (isUnique) {
+                    // add new column combination to unique combination list
                     uniqueCombination.push(subsets[i]);
                     answer++;
                 }
